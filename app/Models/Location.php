@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Location extends Model
 {
     use HasFactory;
+
+    public function offers()
+    {
+        return $this->belongsToMany(Offer::class, 'location_offer');
+    }
 }
