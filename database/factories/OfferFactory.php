@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Constants\Status;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,11 @@ class OfferFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'title' => fake()->sentence(),
+            'description' => fake()->paragraph(3),
+            'price' => fake()->numberBetween(100,500),
+            'status' => Status::DRAFT,
+            'author_id' => User::factory(),
         ];
     }
 }

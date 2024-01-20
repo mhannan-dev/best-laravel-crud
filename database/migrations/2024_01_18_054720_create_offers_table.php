@@ -16,6 +16,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('author_id')->constrained('users');
             $table->string('title');
+            $table->string('slug')->nullable();
             $table->text('description');
             $table->double('price');
             $table->string('image')->nullable();
@@ -35,6 +36,6 @@ return new class extends Migration
         Schema::table('offers', function (Blueprint $table) {
             $table->dropForeign(['author_id']);
             $table->dropIfExists();
-        });  
+        });
     }
 };
