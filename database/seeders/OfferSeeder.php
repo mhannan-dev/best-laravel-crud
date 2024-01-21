@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Offer;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class OfferSeeder extends Seeder
 {
@@ -12,6 +13,10 @@ class OfferSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        $offers = Offer::factory()->count(5)->create();
+        foreach ($offers as $key => $offer) {
+            $categories = Category::inRandomOrder()->take(5)->get();
+            $offer->categories()->sync($categories->pluck('id'));
+        }
     }
 }

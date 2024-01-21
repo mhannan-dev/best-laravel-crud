@@ -17,10 +17,9 @@ class Offer extends Model
         'description',
         'price',
         'image',
-        'status',
-        // Add other fillable attributes as needed
+        'status'
     ];
-    
+
     public function setTitleAttribute($value)
     {
         $this->attributes['title'] = $value;
